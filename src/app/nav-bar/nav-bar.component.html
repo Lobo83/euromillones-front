@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+	<a style="color: azure;" >Euromillones</a>
+	<div class="fill"></div>
+	<button mat-icon-button [matMenuTriggerFor]="menu">
+		<mat-icon>menu</mat-icon> <!--este icono more_vert viene de la librería de google material-icon-->
+	</button>
+</mat-toolbar>
+<mat-menu #menu="matMenu"> <!--sign # siver para declarar una variable en el DOM, en este caso declara la variable menu con valor matMenu, 
+	que será consumida en  <button mat-icon-button [matMenuTriggerFor]="menu">. Esto es, declaro una variable de tipo menú 
+		y la uso en el boton que ya tiene un binding para disparar el menú que se le pase-->
+	<button mat-menu-item> <!--este matm-menu-item se utiliza para que mat-menu pueda utilizar elementos primitivos de html, en este caso, button-->
+		<mat-icon>info</mat-icon>
+		<span>About</span>
+	</button>
+	<button mat-menu-item>
+		<mat-icon>settings</mat-icon>
+		<span>Services</span>
+	</button>
+	<button mat-menu-item>
+		<mat-icon>contacts</mat-icon>
+		<span>Contact</span>
+	</button>
+</mat-menu>
