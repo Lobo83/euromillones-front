@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { WrongPageComponent } from './wrong-page/wrong-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  
+  { path: 'jugadas', loadChildren: () => import('./jugadas/jugadas.module').then(m => m.JugadasModule)},
+  { path: 'estadisticas', loadChildren: () => import('./estadisticas/estadisticas.module').then(m => m.EstadisticasModule)},
+  {path: '**', component: WrongPageComponent},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

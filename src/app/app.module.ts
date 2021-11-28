@@ -8,11 +8,19 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { WrongPageComponent } from './wrong-page/wrong-page.component';
+import { HomeComponent } from './home/home.component';
+import {MatCardModule} from '@angular/material/card';
+import { JugadasModule } from './jugadas/jugadas.module';
+import { EstadisticasModule } from './estadisticas/estadisticas.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    WrongPageComponent,
+    
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +28,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    JugadasModule,
+    EstadisticasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
