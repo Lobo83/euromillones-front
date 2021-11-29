@@ -10,8 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { WrongPageComponent } from './wrong-page/wrong-page.component';
 import { HomeComponent } from './home/home.component';
-import {MatCardModule} from '@angular/material/card';
-
+import {EuromillonesMaterialModule} from './euromillones-material/euromillones-material.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,7 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    MatCardModule,
+    EuromillonesMaterialModule
 
   ],
   providers: [],

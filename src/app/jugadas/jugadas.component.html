@@ -1,1 +1,41 @@
-<img src="assets/backpack.png">
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <form #f="ngForm">
+
+                <mat-form-field>
+                    <mat-label>Fecha Desde</mat-label>
+                    <input matInput type="date" placeholder="Fecha desde" name="fechaDesde" [formControl]="fechaDesde"
+                         />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="date" placeholder="Fecha hasta" name="fechaHasta" [formControl]="fechaHasta"/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Longitud Secuencia" name="longitudSecuencia"
+                        [formControl]="longitudSecuencia"  />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Número de jugadas" name="numeroJugadas"
+                        [formControl]="numeroJugadas"  />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Frecuencia minima" name="frecuenciaMinima"
+                        [formControl]="frecuenciaMinima"  />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select placeholder="tipoJugada" name="tipoJugada" ngModel required>
+                        <mat-option *ngFor="let tipo of tipoJugadas" [value]="tipo">{{tipo}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button color="accent" type="submit">
+                    <mat-icon>check</mat-icon>Generar
+                </button>
+
+            </form>
+        </div>
+        <div class="col">culo</div>
+    </div>
+    
+</div>
