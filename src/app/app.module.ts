@@ -11,6 +11,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { WrongPageComponent } from './wrong-page/wrong-page.component';
 import { HomeComponent } from './home/home.component';
 import {EuromillonesMaterialModule} from './euromillones-material/euromillones-material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {EuromillonesMaterialModule} from './euromillones-material/euromillones-m
     MatIconModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    EuromillonesMaterialModule
+    EuromillonesMaterialModule,
+    HttpClientModule
 
   ],
   providers: [],

@@ -35,7 +35,16 @@
 
             </form>
         </div>
-        <div class="col">culo</div>
+        <div class="col">
+            <mat-list>
+                <mat-list-item *ngFor="let jugada of jugadas" > 
+                    
+                    <div mat-line>{{jugada.valor1}} - {{jugada.valor1}} - {{jugada.valor2}} - {{jugada.valor3}} - {{jugada.valor4}} - {{jugada.valor5}} <mat-icon mat-list-icon>star</mat-icon> {{jugada.estrella1}} - {{jugada.estrella2}} </div>
+
+                    
+                    </mat-list-item>
+               </mat-list>
+        </div>
     </div>
     
 </div>

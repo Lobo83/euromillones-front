@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import {EuromillonesMaterialModule} from '../euromillones-material/euromillones-material.module';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import {MatListModule} from '@angular/material/list';
 
 /**
  *
@@ -22,7 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-
+    MatListModule,
     EuromillonesMaterialModule,
     RouterModule.forChild([{ path: '', component: JugadasComponent }])
   ]
