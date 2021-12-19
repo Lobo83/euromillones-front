@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { EstadisticasService } from '../shared/estadisticas/estadisticas.service';
 
 @Component({
   selector: 'app-estadisticas',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstadisticasComponent implements OnInit {
 
-  constructor() { }
+  fechaHasta = new FormControl();
+  fechaDesde = new FormControl('', [Validators.required]);
+  longitudSecuencia = new FormControl('');
+  tipoEstadistica: String[] = ["Secuencias", "Estrellas","Frecuencias"];
+  tipoEstadisticaSeleccionada: String = "";
+  constructor(estadisticaService:EstadisticasService) { }
 
   ngOnInit(): void {
   }
-
+  obtenerEstadisticas(){}
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { JugadasService } from '../shared/jugadas/jugadas.service';
 import { JugadaVO } from '../shared/jugadas/jugadavo';
 
