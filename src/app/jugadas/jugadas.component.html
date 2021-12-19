@@ -25,11 +25,11 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <mat-select placeholder="tipoJugada" name="tipoJugada" ngModel required>
+                    <mat-select placeholder="tipoJugada" name="tipoJugada" [(ngModel)]="tipoJugadaSeleccionada"  required>
                         <mat-option *ngFor="let tipo of tipoJugadas" [value]="tipo">{{tipo}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <button mat-raised-button color="accent" type="submit">
+                <button mat-raised-button color="accent" type="submit" (click)="generarJugadas()">
                     <mat-icon>check</mat-icon>Generar
                 </button>
 

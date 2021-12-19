@@ -20,14 +20,57 @@ export class JugadasComponent implements OnInit {
   jugadas: JugadaVO[] = [];
 
   tipoJugadas: String[] = ["Aleatoria", "Frecuencias"];
+  tipoJugadaSeleccionada: String = "";
   constructor(private jugadasService: JugadasService) { }
 
   ngOnInit(): void {
 
-    this.numeroJugadas.valueChanges.pipe(switchMap(numJugadas => this.obtenerJugadasAleatorias(numJugadas))).subscribe(
+    /*this.numeroJugadas.valueChanges.pipe(switchMap(numJugadas => this.obtenerJugadasAleatorias(numJugadas))).subscribe(
       respuesta => { this.jugadas = respuesta }
-    );
+    );*/
 
+  }
+
+
+  /**
+   *
+   *
+   * @memberof JugadasComponent
+   */
+  generarJugadas() {
+    switch (this.tipoJugadaSeleccionada) {
+      case "Aleatoria":
+        this.obtenerJugadasAleatorias(this.numeroJugadas.value).subscribe(respuesta => this.jugadas = respuesta);
+        break;
+
+      case "Frecuencias":
+        this.obtenerJugadasFrecuentes(this.longitudSecuencia.value, this.fechaDesde.value, this.fechaHasta.value,
+          this.frecuenciaMinima.value, this.numeroJugadas.value).subscribe(respuesta => this.jugadas = respuesta);
+        break;
+
+      default:
+        console.log("Error, tipo jugada no valida");
+    }
+  }
+  /**
+   *
+   *
+   * @param {number} longitudSecuencia
+   * @param {Date} fechaDesde
+   * @param {Date} fechaHasta
+   * @param {number} frecuenciaMinima
+   * @param {number} numeroJugadas
+   * @return {*}  {Observable<JugadaVO[]>}
+   * @memberof JugadasComponent
+   */
+  obtenerJugadasFrecuentes(longitudSecuencia: number, fechaDesde: Date, fechaHasta: Date, frecuenciaMinima: number, numeroJugadas: number): Observable<JugadaVO[]> {
+    let result: Observable<JugadaVO[]> = this.jugadasService.obtenerJugadasFrequentes(longitudSecuencia, fechaDesde, fechaHasta, frecuenciaMinima, numeroJugadas).pipe(
+      catchError(error => {
+        console.log(`Error ${error} obteniendo jugadas`);
+        return of([]);
+      })
+    )
+    return result;
   }
   /**
    *
