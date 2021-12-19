@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { EstadisticasService } from '../shared/estadisticas/estadisticas.service';
+import { FrecuenciaVO } from '../shared/estadisticas/frecuenciavo';
+import { SecuenciaVO } from '../shared/estadisticas/secuenciavo';
 
 @Component({
   selector: 'app-estadisticas',
@@ -14,9 +16,22 @@ export class EstadisticasComponent implements OnInit {
   longitudSecuencia = new FormControl('');
   tipoEstadistica: String[] = ["Secuencias", "Estrellas","Frecuencias"];
   tipoEstadisticaSeleccionada: String = "";
+  secuencias:SecuenciaVO[]=[];
+  frecuencias:FrecuenciaVO[]=[];
   constructor(estadisticaService:EstadisticasService) { }
 
   ngOnInit(): void {
   }
-  obtenerEstadisticas(){}
+  obtenerEstadisticas(){
+    switch(this.tipoEstadisticaSeleccionada){
+      case "Secuencias":break;
+      case "Estrellas":break;
+      case "Frecuencias":break;
+      default: console.error("tipo estadicticas desconocida");
+    }
+  }
+
+  obtenerEstrellas(){
+    
+  }
 }
