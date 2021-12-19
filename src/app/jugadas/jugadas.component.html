@@ -35,15 +35,18 @@
 
             </form>
         </div>
-        <div class="col">
+        <div class="col" *ngIf="jugadas.length>0">
             <mat-list>
                 <mat-list-item *ngFor="let jugada of jugadas" > 
                     
-                    <div mat-line>{{jugada.valor1}} - {{jugada.valor1}} - {{jugada.valor2}} - {{jugada.valor3}} - {{jugada.valor4}} - {{jugada.valor5}} <mat-icon mat-list-icon>star</mat-icon> {{jugada.estrella1}} - {{jugada.estrella2}} </div>
+                    <div mat-line>{{jugada.valor1}} - {{jugada.valor2}} - {{jugada.valor3}} - {{jugada.valor4}} - {{jugada.valor5}}  <mat-icon mat-list-icon>star</mat-icon> {{jugada.estrella1}} - {{jugada.estrella2}} </div>
 
                     
                     </mat-list-item>
                </mat-list>
+        </div>
+        <div class="col" *ngIf="jugadas.length<=0">
+            <h1>No se han obtenido jugadas</h1>
         </div>
     </div>
     

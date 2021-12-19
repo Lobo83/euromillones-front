@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JugadasComponent } from './jugadas.component';
 import { RouterModule } from '@angular/router';
@@ -7,6 +7,10 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs, 'es');
 /**
  *
  *
@@ -25,6 +29,7 @@ import {MatListModule} from '@angular/material/list';
     MatListModule,
     EuromillonesMaterialModule,
     RouterModule.forChild([{ path: '', component: JugadasComponent }])
-  ]
+  ],
+  providers: [ { provide: LOCALE_ID, useValue: 'es' } ],
 })
 export class JugadasModule { }

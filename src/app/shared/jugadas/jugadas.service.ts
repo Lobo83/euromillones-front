@@ -1,8 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { JugadaVO } from './jugadavo';
+
 
 /**
  *
@@ -53,15 +55,17 @@ export class JugadasService {
    * @memberof JugadasService
    */
   obtenerJugadasFrequentes(longitud: number, fechaInicial: Date, fechaFinal: Date, frecuenciaMinima: number, numeroJugadas: number): Observable<JugadaVO[]> {
-    let params = new HttpParams().set('numeroJugadas', numeroJugadas).
-    set('longitud',longitud)
-    .set('fechaInicial',fechaInicial.toDateString())
-    .set('fechaFinal',fechaFinal.toDateString())
-    .set('numeroJugadas',numeroJugadas);
+    let datePipe=new DatePipe('es');
+    let params = new HttpParams().set('numeroJugadas', numeroJugadas)
+    .set('longitud',longitud)
+    .set('fechaInicial',datePipe.transform(fechaInicial,'dd-MM-yyyy')!)
+    .set('fechaFinal',datePipe.transform(fechaFinal,'dd-MM-yyyy')!)
+    .set('numeroJugadas',numeroJugadas)
+    .set('frecuenciaMinima',frecuenciaMinima);
 
     return this.http.get<JugadaVO[]>("http://localhost:8080/jugada/frecuente",{params}).pipe(catchError(err => {
       
-        console.log(`Error ${err} invocando a backend`);
+        console.log(`Error ${err.get} invocando a backend`);
       
       return EMPTY; //Observable.empty YA NO EXISTE
       //Lanznado EMPTY no se entra por la gestion de error pero no se desconecta del observable
