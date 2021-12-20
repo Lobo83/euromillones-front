@@ -5,21 +5,25 @@
 
                 <mat-form-field>
                     <mat-label>Fecha Desde</mat-label>
-                    <input matInput type="date" placeholder="Fecha desde" name="fechaDesde" [formControl]="fechaDesde"
-                         />
+                    <input matInput type="date" placeholder="Fecha desde" name="fechaDesde"
+                        [formControl]="fechaDesde" />
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput type="date" placeholder="Fecha hasta" name="fechaHasta" [formControl]="fechaHasta"/>
+                    <input matInput type="date" placeholder="Fecha hasta" name="fechaHasta"
+                        [formControl]="fechaHasta" />
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-select placeholder="tipoEstadistica" name="tipoEstadistica"
+                        [(ngModel)]="tipoEstadisticaSeleccionada" (change)="limpiarResultados()" required>
+                        <mat-option *ngFor="let tipo of tipoEstadistica" [value]="tipo">{{tipo}}</mat-option>
+                        
+                    </mat-select>
                 </mat-form-field>
                 <mat-form-field *ngIf="tipoEstadisticaSeleccionada=='Secuencias'">
                     <input matInput type="number" placeholder="Longitud Secuencia" name="longitudSecuencia"
-                        [formControl]="longitudSecuencia"  />
-                </mat-form-field>
-
-                <mat-form-field>
-                    <mat-select placeholder="tipoEstadistica" name="tipoEstadistica" [(ngModel)]="tipoEstadisticaSeleccionada"  required>
-                        <mat-option *ngFor="let tipo of tipoEstadistica" [value]="tipo">{{tipo}}</mat-option>
-                    </mat-select>
+                        [formControl]="longitudSecuencia" />
                 </mat-form-field>
                 <button mat-raised-button color="accent" type="submit" (click)="obtenerEstadisticas()">
                     <mat-icon>check</mat-icon>Generar
@@ -27,7 +31,24 @@
 
             </form>
         </div>
-        
+        <div class="col" >
+            <div  *ngIf="resultados.length>0">
+                <mat-list>
+
+                    <mat-list-item *ngFor="let resultado of resultados">
+
+                        <div mat-line>{{resultado}} </div>
+
+
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <div *ngIf="resultados.length==0">
+                <h1>No se han encontrado datos</h1>
+            </div>
+        </div>
     </div>
     
+
+
 </div>

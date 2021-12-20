@@ -37,7 +37,7 @@ export class EstadisticasService {
     .set('fechaFinal', datePipe.transform(fechaFinal,'dd-MM-yyyy')!)
     .set('longitud',longitud);
 
-    return this.http.get<SecuenciaVO[]>("http://localhost:8080/estadisticas/sequencias", { params }).pipe(catchError(err => {
+    return this.http.get<SecuenciaVO[]>("http://localhost:8080/estadisticas/secuencias", { params }).pipe(catchError(err => {
 
       console.log(`Error ${err} invocando a backend`);
 

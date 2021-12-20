@@ -38,5 +38,5 @@ export interface FrecuenciaVO{
      * @type {boolean}
      * @memberof FrecuenciaVO
      */
-    esEstrella:boolean;
+    estrella:boolean;
 }

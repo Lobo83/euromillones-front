@@ -5,8 +5,12 @@ import { RouterModule } from '@angular/router';
 import {EuromillonesMaterialModule} from '../euromillones-material/euromillones-material.module';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
@@ -19,7 +23,8 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatListModule,
-    CommonModule,RouterModule.forChild([{path: '', component: EstadisticasComponent}])
+    MatSelectModule,
+        CommonModule,RouterModule.forChild([{path: '', component: EstadisticasComponent}])
   ]
 })
 export class EstadisticasModule { }
