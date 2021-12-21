@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { EstadisticasService } from '../shared/estadisticas/estadisticas.service';
@@ -25,9 +25,9 @@ export class EstadisticasComponent implements OnInit {
    *
    * @memberof EstadisticasComponent
    */
-  fechaHasta = new FormControl();
+  /*fechaHasta = new FormControl();
   fechaDesde = new FormControl('', [Validators.required]);
-  longitudSecuencia = new FormControl('');
+  longitudSecuencia = new FormControl('');*/
   tipoEstadistica: String[] = ["Secuencias", "Estrellas","Frecuencias"];
   tipoEstadisticaSeleccionada: String = "";
   secuencias:SecuenciaVO[]=[];
@@ -48,11 +48,11 @@ export class EstadisticasComponent implements OnInit {
    *
    * @memberof EstadisticasComponent
    */
-  obtenerEstadisticas(){
+  obtenerEstadisticas(f: NgForm){
     this.resultados=[];
     switch(this.tipoEstadisticaSeleccionada){
       case "Secuencias":
-      this.obtenerSecuencias(this.fechaDesde.value,this.fechaHasta.value,this.longitudSecuencia.value).subscribe(respuesta => 
+      this.obtenerSecuencias(f.value.fechaDesde,f.value.fechaHasta,f.value.longitudSecuencia).subscribe(respuesta => 
         {this.secuencias = respuesta;
           this.secuencias.forEach(secuencia=>{
             this.resultados.push(secuencia.numeros.join('-')+" "+secuencia.frecuencia)
@@ -62,7 +62,7 @@ export class EstadisticasComponent implements OnInit {
       break;
       
       case "Estrellas":
-        this.obtenerEstrellas(this.fechaDesde.value,this.fechaHasta.value).subscribe(respuesta => 
+        this.obtenerEstrellas(f.value.fechaDesde,f.value.fechaHasta).subscribe(respuesta => 
           {this.secuencias = respuesta;
             this.secuencias.forEach(secuencia=>{
               this.resultados.push(secuencia.numeros.join('-')+" frecuencia: "+secuencia.frecuencia)
@@ -71,7 +71,7 @@ export class EstadisticasComponent implements OnInit {
           });
         break;
       case "Frecuencias":
-      this.obtenerFrecuencias(this.fechaDesde.value,this.fechaHasta.value).subscribe(respuesta => {
+      this.obtenerFrecuencias(f.value.fechaDesde,f.value.fechaHasta).subscribe(respuesta => {
         this.frecuencias = respuesta
         this.frecuencias.forEach(frecuencia =>{
           this.resultados.push("valor: "+frecuencia.valor+" frecuencia: "+frecuencia.frecuencia+" frecuencia relativa:"+frecuencia.frecuenciaRelativa+" estrella: "+ String(frecuencia.estrella))
@@ -80,12 +80,10 @@ export class EstadisticasComponent implements OnInit {
       break;
       default: console.error("tipo estadicticas desconocida");
     }
-    this.componerResultados();
+    
   }
 
-  componerResultados(){
-
-  }
+  
   /**
    *
    *

@@ -1,16 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <form #f="ngForm">
+            <form #f="ngForm" (ngSubmit)="obtenerEstadisticas(f)">
 
                 <mat-form-field>
                     <mat-label>Fecha Desde</mat-label>
                     <input matInput type="date" placeholder="Fecha desde" name="fechaDesde"
-                        [formControl]="fechaDesde" />
+                        ngModel />
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput type="date" placeholder="Fecha hasta" name="fechaHasta"
-                        [formControl]="fechaHasta" />
+                    ngModel />
                 </mat-form-field>
 
 
@@ -23,9 +23,9 @@
                 </mat-form-field>
                 <mat-form-field *ngIf="tipoEstadisticaSeleccionada=='Secuencias'">
                     <input matInput type="number" placeholder="Longitud Secuencia" name="longitudSecuencia"
-                        [formControl]="longitudSecuencia" />
+                    ngModel />
                 </mat-form-field>
-                <button mat-raised-button color="accent" type="submit" (click)="obtenerEstadisticas()">
+                <button mat-raised-button color="accent" type="submit" >
                     <mat-icon>check</mat-icon>Generar
                 </button>
 
